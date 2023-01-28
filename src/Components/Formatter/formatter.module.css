@@ -1,0 +1,22 @@
+#main{
+    height: 100%;
+}
+
+.option_comps:hover{
+    color: white;
+}
+
+#options{
+    display: flex;
+    align-items: center;
+    height: 40px;
+    color: #BBBEC0;
+    font-size: .8rem;
+    border-bottom: 1px solid #BBBEC0;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+#design{
+    margin-left: 1rem;
+}

@@ -52,7 +52,7 @@ console.log(auth_state)
             {
             auth_state==true?
                 window.location.pathname=='/'?
-                Navigate('/dashboard')
+                Navigate('/home')
                 :
                 <Outlet/>
             :

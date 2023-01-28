@@ -1,0 +1,30 @@
+#main{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    color: white;
+}
+
+.top_nav_comps{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    /* border: 2px solid white; */
+}
+
+#top_nav_middle{
+    cursor: pointer;
+}
+
+#invite_button{
+    display: flex;
+    align-items: center;
+    height: 80%;
+    margin-right: 2rem;
+    padding-inline: 2rem;
+    background-color: #3c0ce9;
+    border-radius: 5px;
+}
+
+#invite_button:hover{
+    background-color: #6b47eb;
+}

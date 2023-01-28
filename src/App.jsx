@@ -5,9 +5,11 @@ import {
 	Routes,
   } from "react-router-dom";
 import Auth from './Components/Auth/Auth'
-import Dashboard from './Pages/Dashboard/Dashboard';
-// const Dashboard = React.lazy(() => import('./Pages/Dashboard/Dashboard'));
+import Loading from './Components/Loading/Loading';
+// import Editor from './Pages/Editor/Editor';
 const Login = React.lazy(() => import('./Pages/Login/Login'));
+const Home = React.lazy(() => import('./Pages/Home/Home'));
+const Editor = React.lazy(() => import('./Pages/Editor/Editor'));
 const Register = React.lazy(() => import('./Pages/Register/Register'));
 
 function App() {
@@ -20,16 +22,23 @@ function App() {
           <Route element={<Auth/>}>
 
               <Route path="/" element={
-                  <React.Suspense fallback={<>.......</>}>
+                  <React.Suspense fallback={<Loading></Loading>}>
                     <Login/>
                   </React.Suspense>
                 }>
               </Route>
 
-              <Route path="/dashboard" element={
-                  // <React.Suspense fallback={<>...</>}>
-                    <Dashboard/>
-                  // </React.Suspense>
+              <Route path="/editor" element={
+                  <React.Suspense fallback={<Loading></Loading>}>
+                    <Editor/>
+                  </React.Suspense>
+                }>
+              </Route>
+
+              <Route path="/home" element={
+                  <React.Suspense fallback={<Loading></Loading>}>
+                    <Home/>
+                  </React.Suspense>
                 }>
               </Route>
               
