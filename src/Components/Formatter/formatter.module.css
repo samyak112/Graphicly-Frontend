@@ -1,15 +1,18 @@
 #main{
     height: 100%;
+    /* margin: 1rem; */
+    background-color: #111111;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+    border-radius: 15px;
 }
 
-.option_comps:hover{
+/* .option_comps:hover{
     color: white;
 }
 
 #options{
     display: flex;
     align-items: center;
-    height: 40px;
     color: #BBBEC0;
     font-size: .8rem;
     border-bottom: 1px solid #BBBEC0;
@@ -19,4 +22,4 @@
 
 #design{
     margin-left: 1rem;
-}
+} */

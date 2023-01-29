@@ -9,9 +9,6 @@ function Top_nav() {
           Untitled
         </div>
       </div>
-      <div className={topnavcss.top_nav_comps} id={topnavcss.top_nav_right}>
-        <button id={topnavcss.invite_button}>Invite</button>
-      </div>
     </div>
   )
 }

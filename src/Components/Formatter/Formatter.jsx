@@ -1,14 +1,11 @@
 import React from 'react'
+import Background_formatter from '../All_formatters/Background_formatter/Background_formatter'
 import formattercss from '../Formatter/formatter.module.css'
 
 function Right_nav() {
   return (
     <div id={formattercss.main}>
-      <div className={formattercss.main_comps} id={formattercss.options}>
-        <div className={formattercss.option_comps} id={formattercss.design}>Design</div>
-        <div className={formattercss.option_comps} id={formattercss.inspect}>Inspect</div>
-      </div>
-      <div className={formattercss.main_comps} id={formattercss.formatter_body}></div>
+      <Background_formatter/>
     </div>
   )
 }

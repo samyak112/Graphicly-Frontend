@@ -1,9 +1,19 @@
+#main_wrap{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
 #main{
     display: flex;
     flex-direction: column;
     align-items: center;
+    align-self: center;
     color: #CACACA;
-    height: 100%;
+    height: fit-content;
+    border-radius: 20px;
+    background-color: #111111;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
 }
 
 .main_comps{
@@ -11,7 +21,6 @@
     justify-content: center;
     width: 100%;
     margin-top: 1rem;
-    /* border: 2px solid white; */
     padding-block: .5rem;
     position: relative;
 }
@@ -21,7 +30,6 @@
 }
 
 .main_comps:hover{
-    background-color: #111111;
     cursor: pointer;
 }
 
@@ -40,7 +48,7 @@
 
 .dropdown_menu{
     position: absolute;
-    left: 5rem;
+    left: 3rem;
     width: 10rem;
     margin-left: .5rem;
     padding: .5rem;

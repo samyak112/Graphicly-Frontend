@@ -5,6 +5,7 @@ import Hand from '@mui/icons-material/PanToolOutlined';
 import Pointer from '@mui/icons-material/NearMeOutlined';
 import Undo from '@mui/icons-material/Undo';
 import Redo from '@mui/icons-material/Redo';
+import Invite_people from '@mui/icons-material/SupervisorAccount';
 
 const other_options = [
     {
@@ -46,6 +47,12 @@ const other_options = [
     {
       option_icon:Redo,
       option_name:"Redo",
+      option_type:'none'
+    },
+
+    {
+      option_icon:Invite_people,
+      option_name:"Invite People",
       option_type:'none'
     },
     

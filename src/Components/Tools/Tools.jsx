@@ -55,7 +55,6 @@ function Left_nav() {
     }
   }
   
-
   function dropdown_menu_shapes(){
     return(
       <div className={toolcss.dropdown_menu} style={{display:dropdown_state.shapes}} >
@@ -84,6 +83,8 @@ function Left_nav() {
   }
 
   return (
+    <div id={toolcss.main_wrap}>
+
     <div id={toolcss.main}>
       <div className={toolcss.main_comps} onClick={()=>{open_dropdown('options')}}>
         <div className={toolcss.main_comps_wrap}>
@@ -116,6 +117,7 @@ function Left_nav() {
         )
       })
     }
+    </div>
     </div>
   )
 }
