@@ -1,23 +1,22 @@
-import React from 'react'
+import React,{ useState } from 'react'
 import toolcss from './tools.module.css'
 import Options from '@mui/icons-material/GridViewOutlined';
 import Save from '@mui/icons-material/Save';
-import SaveAs from '@mui/icons-material/SaveAs';
 import Back from '@mui/icons-material/ArrowBack';
 import Shapes from '@mui/icons-material/InterestsOutlined';
 import Tooltip from '@mui/material/Tooltip';
 import Forward from '@mui/icons-material/ArrowForwardIos';
 import {new_tool} from '../../Components/Redux/Selected_tool'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import other_options from './option_objects/Other_options';
 import shape_options from './option_objects/Shapes_options';
-import { useState } from 'react';
-
+import save_project from '../../database/save_project';
+import { Link } from 'react-router-dom';
 
 function Left_nav() {
   const dispatch = useDispatch()
   const [dropdown_state, setdropdown_state] = useState({shapes:'none' , options:'none'})
-  
+  let canvas_specs = useSelector(state => state.elements_specs.canvas_details)
 
   function tooltip_options(Icon, option_name,option_type){
     return(
@@ -75,12 +74,13 @@ function Left_nav() {
   function dropdown_menu_options(){
     return(
       <div className={toolcss.dropdown_menu} style={{display:dropdown_state.options}} >
-        <div className={toolcss.menu_comps} id={toolcss.comp_1}><Save/> Save</div>
-        <div className={toolcss.menu_comps} id={toolcss.comp_2}><SaveAs/> Save As</div>
-        <div className={toolcss.menu_comps} id={toolcss.comp_3}><Back/> Back</div>
+        <div className={toolcss.menu_comps} id={toolcss.comp_1} onClick={()=>{save_project(canvas_specs)}}><Save/> Save</div>
+        <Link to={'/'} className={toolcss.menu_comps} id={toolcss.comp_2}><Back/> Back</Link>
       </div>
     )
   }
+
+
 
   return (
     <div id={toolcss.main_wrap}>

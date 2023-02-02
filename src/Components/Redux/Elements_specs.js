@@ -3,19 +3,31 @@ import { createSlice } from '@reduxjs/toolkit'
 export const elements_specs = createSlice({
   name: 'elements_specs',
   initialState: {
-    base_background_value: '#1e1e1e',
+    current_element : null,
+    canvas_details:null
   },
   reducers: {
-    new_base_background: (state,action) => {
-      state.base_background_value = action.payload
+    new_current_element : (state,action) => {
+      state.current_element = action.payload
     },
+    update_element_spec : (state,action) =>{
+      let {key, value} = action.payload
+      state.current_element[key] = value
+    },
+    new_canvas_details : (state,action) => {
+      state.canvas_details = action.payload
+    },
+    update_canvas_details : (state,action) => {
+      let {key , value} = action.payload
+      state.canvas_details[key] = value
+    }
   },
 })
 
 
 
 // Action creators are generated for each case reducer function
-export const { new_base_background} = elements_specs.actions
+export const {new_current_element , update_element_spec , new_canvas_details ,update_canvas_details } = elements_specs.actions
 
 
 export default elements_specs.reducer

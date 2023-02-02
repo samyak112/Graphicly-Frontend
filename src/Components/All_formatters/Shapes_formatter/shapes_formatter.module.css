@@ -1,0 +1,160 @@
+#main{
+    /* border: 2px solid white; */
+    height: 100%;
+    color: white;
+}
+
+#shapes_specs_box{
+    padding: 1rem;
+    width: 12rem;
+}
+
+#specs{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-size: .8rem;
+    margin-top: .5rem;
+}
+
+.heading{
+    font-weight: 600;
+}
+
+.heading:not(:first-child){
+    margin-top: 1.5rem;
+}
+
+.specs_comps{
+    display: flex;
+    /* gap: 1rem; */
+}
+
+.specs_comps_label{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 2rem;
+    width: 2rem;
+    font-weight: 600;
+    color: rgb(104, 101, 101);
+}
+
+.specs_comps_input{
+    display: flex;
+    align-items: center;
+    font-size: .8rem;
+}
+
+.specs_comps_input input{
+    border: none;
+    width: 3rem;
+    background-color: transparent;
+    height: 100%;
+}
+
+.specs_comps_input input:focus{
+    outline: none;
+}
+
+#color_box{
+    border: none;
+    padding: 0px;
+    width: 1rem;
+    height: 1rem;
+    /* margin-left: .5rem; */
+    cursor: pointer;
+}
+
+#color_value{
+    width: 3rem;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: .8rem;
+    margin-left: 1rem;
+}
+
+.fill_specs{
+    display: flex;
+    align-items:center;
+    /* padding-block: .2rem; */
+    width: fit-content;
+    margin-top: .5rem;
+    /* border: 2px solid white; */
+}
+
+#fill_specs_stroke{
+    display: flex;
+    align-items: center;
+}
+
+#fill_specs_color_box{
+    display: flex;
+    align-items: center;
+}
+
+#stroke_block{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.fill_specs_comps{
+    /* border: 2px solid white; */
+    height: 100%;
+}
+
+#border{
+    cursor: pointer;
+    position: relative;
+}
+
+#border_types_wrap{
+    display: flex;
+    justify-content: center;
+    align-items:center ;
+    position: absolute;
+    top: 2rem;
+    height: 11rem;
+    width: 10rem;
+    background-color: #000000;
+    border-radius: 10px;
+}
+
+#border_types{
+    height: 90%;
+    width: 90%;
+    /* padding: 1rem; */
+}
+
+.border_types_comps{
+    display: grid;
+    grid-template-columns: 40px auto;
+    height: 2rem;
+    width: 100%;
+    border-radius: 5px;
+    padding: 0px;
+    background-color: transparent;
+}
+
+.border_types_comps:hover{
+    background-color: rgb(56, 56, 213);
+}
+
+.selected_border{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.border_label_wrap{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    color: white;
+    font-weight: 400;
+}
+
+

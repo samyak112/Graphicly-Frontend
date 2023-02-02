@@ -1,7 +1,7 @@
 #main{
     display: flex;
     justify-content: center;
-    width: 10rem;
+    width: 15rem;
     height: 2.5rem;
     color: white;
     background-color: #111111;
@@ -16,4 +16,15 @@
 
 #top_nav_middle{
     cursor: pointer;
+}
+
+#top_nav_middle_wrap input{
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    text-align: center;
+}
+
+#top_nav_middle_wrap input:focus{
+    outline: none;
 }

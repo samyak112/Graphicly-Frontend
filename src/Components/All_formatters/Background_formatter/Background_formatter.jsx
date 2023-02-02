@@ -1,23 +1,38 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import backgroundcss from '../Background_formatter/background.module.css'
-import { new_base_background } from '../../Redux/Elements_specs';
+import { update_element_spec , update_canvas_details } from '../../Redux/Elements_specs';
 
 function Background_formatter() {
-  const [color_value, setcolor_value] = useState('#1e1e1e')
+  const [color_value, setcolor_value] = useState(null)
   const dispatch = useDispatch();
+  let canvas_details = useSelector(state => state.elements_specs.canvas_details)
+
+  useEffect(() => {
+    if(color_value!=null && canvas_details!=null){
+      dispatch(update_canvas_details({key:'canvas_color' , value:color_value}))
+    }
+    if(color_value==null){
+      setcolor_value("#1e1e1e")
+    }
+  }, [color_value])
+
+  useEffect(() => {
+    if(canvas_details!=null){
+      setcolor_value(canvas_details.canvas_color)
+    }
+  }, [canvas_details])
+  
+
 
   function handle_color_value(e){
     let value = e.target.value;
     setcolor_value(value)
-    dispatch(new_base_background(value))
     if(value.length==6 && value[0]=='#'){
         setcolor_value(value)
-        dispatch(new_base_background(value))
     }
     else if(value.length==6 && value[0]!='#'){
         setcolor_value('#'.concat(value))
-        dispatch(new_base_background('#'.concat(value)))
     }
     
   }
