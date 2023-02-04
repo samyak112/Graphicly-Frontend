@@ -7,44 +7,21 @@ import no_project from '../../Images/no_project.png'
 import InfoIcon from '@mui/icons-material/Info';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
+import getData from '../../database/open_project';
+import { new_canvas_details } from '../../Components/Redux/Elements_specs';
+import { useDispatch } from 'react-redux';
 
 function Home() {
 
   const [canvas_projects, setcanvas_projects] = useState([])
-  function createDatabase() {
-    const request = window.indexedDB.open('canvas_database', 3);
+  const dispatch = useDispatch()
 
-    request.onsuccess = (e) => {
-      const db = e.target.result;
-      const transaction = db.transaction(["canvas"], "readwrite");
-
-      transaction.oncomplete = (event) => {
-        console.log('done getting oncomplete')
-      };
-    
-      transaction.onerror = (event) => {
-        console.log('there was some error')
-      };
-    
-      const objectStore = transaction.objectStore("canvas");
-    
-      const objectStoreRequest = objectStore.getAll();
-    
-      objectStoreRequest.onsuccess = (event) => {
-        let record = objectStoreRequest.result;
-        setcanvas_projects(record)
-      };
-    };
-
-    request.onupgradeneeded = function(){
-      const db = request.result;
-      const store = db.createObjectStore("canvas" ,{keyPath:"canvas_id"});
-    }
-}
-
-useEffect(()=>{
-  createDatabase()
-},[])
+  useEffect(()=>{
+    getData().then((canvas_data)=>{
+      setcanvas_projects(canvas_data)
+    })
+    dispatch(new_canvas_details(null))
+  },[])
 
 function convertToDateString(timestamp) {
   const date = new Date(timestamp);
@@ -159,7 +136,7 @@ function design_card(elem){
                 {
                   /* recent design card */
                   canvas_projects.map((elem,index)=>{
-                    if(Date.now() - elem.timestamp < 86400000){
+                    if(Date.now() - elem.timestamp < 3600000){
                       return(
                         <>
                         {design_card(elem)}
@@ -180,7 +157,6 @@ function design_card(elem){
                 {
                   /* ALl designs card */
                   canvas_projects.map((elem,index)=>{
-                    console.log(typeof(elem.timestamp) , 'this is the type')
                       return(
                         <>
                         {design_card(elem)}

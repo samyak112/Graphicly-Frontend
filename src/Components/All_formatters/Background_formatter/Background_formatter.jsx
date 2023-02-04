@@ -18,7 +18,7 @@ function Background_formatter() {
   }, [color_value])
 
   useEffect(() => {
-    if(canvas_details!=null){
+    if(canvas_details!=null && canvas_details.color_value!=color_value){
       setcolor_value(canvas_details.canvas_color)
     }
   }, [canvas_details])

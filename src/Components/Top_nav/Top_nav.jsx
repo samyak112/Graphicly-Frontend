@@ -6,7 +6,7 @@ import {update_canvas_details} from '../Redux/Elements_specs'
 function Top_nav({canvas_name}) {
   const dispatch = useDispatch()
   const [input_value, setinput_value] = useState(canvas_name)
-
+  // console.log('nav')
   useEffect(() => {
     if(canvas_name!=null){
       setinput_value(canvas_name)

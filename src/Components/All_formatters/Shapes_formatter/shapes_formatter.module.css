@@ -66,12 +66,12 @@
 }
 
 #color_value{
-    width: 3rem;
+    width: 4rem;
     background-color: transparent;
     border: none;
     outline: none;
     font-size: .8rem;
-    margin-left: 1rem;
+    margin-left: .5rem;
 }
 
 .fill_specs{

@@ -1,5 +1,5 @@
 function save_project(canvas_specs){
-    const openDB = window.indexedDB.open('canvas_database', 3);
+    const openDB = window.indexedDB.open('canvas_database', 2);
   
       openDB.onerror = function(event) {
         console.log('Error opening database');

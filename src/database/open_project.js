@@ -1,37 +1,51 @@
-function getData(canvas_id) {
+function getData(canvas_id=null) {
     return new Promise((resolve,reject)=>{
-        const openDB = window.indexedDB.open('canvas_database', 3);
-        let record;
+        const openDB = window.indexedDB.open('canvas_database', 2);
+
          openDB.onsuccess = function(event){
+            let objectStoreRequest;
             const db = event.target.result;
             const transaction = db.transaction(["canvas"], "readwrite");
       
             // report on the success of the transaction completing, when everything is done
             transaction.oncomplete = (event) => {
-              console.log('done getting oncomplete')
+              // pass
             };
           
             transaction.onerror = (event) => {
-              console.log('there was some error')
+              console.log('there was some error' , event)
             };
           
             // create an object store on the transaction
             const objectStore = transaction.objectStore("canvas");
-          
+            if(canvas_id==null){
+              objectStoreRequest = objectStore.getAll();
+            }
+            else{
+              objectStoreRequest = objectStore.get(canvas_id);
+              
+            }
             // Make a request to get a record by key from the object store
-            const objectStoreRequest = objectStore.get(canvas_id);
-          
+        
             objectStoreRequest.onsuccess = (event) => {
               // report the success of our request  
               let record = objectStoreRequest.result;
               resolve(record)
             };
         }
+
+        openDB.onupgradeneeded = function(){
+          const db = openDB.result;
+          const store = db.createObjectStore("canvas" , {keyPath:"canvas_id"})
+        }
         // open a read/write db transaction, ready for retrieving the data
     })
     
    
   }
+
+  
+
 
   export default getData
 
@@ -100,5 +114,22 @@ function getData(canvas_id) {
 //     ))}
 //   </div>
 // )
+
+// let objects = [{id: 'abc', value: 'foo'}, {id: 'def', value: 'bar'}, {id: 'ghi', value: 'baz'}];
+
+// let hashTable = {};
+
+// for (let object of objects) {
+//   hashTable[object.id] = object;
+// }
+
+// let id = 'def';
+// let object = hashTable[id];
+
+// object.value = 'qux';
+
+// console.log(objects);
+// Output: [{id: 'abc', value: 'foo'}, {id: 'def', value: 'qux'}, {id: 'ghi', value: 'baz'}]
+
 
   

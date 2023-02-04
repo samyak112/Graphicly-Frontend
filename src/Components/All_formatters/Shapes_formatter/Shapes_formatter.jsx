@@ -8,10 +8,13 @@ import Border_left from '@mui/icons-material/BorderLeftOutlined';
 import Border_right from '@mui/icons-material/BorderRightOutlined';
 import Border_top from '@mui/icons-material/BorderTopOutlined';
 import Tick from '@mui/icons-material/DoneOutlined';
+import { useSelector } from 'react-redux';
 
 function Shapes_formatter() {
 
     const [show_border_box, setshow_border_box] = useState('none')
+    const shape_details = useSelector(state => state.elements_specs.current_element)
+    const {x,y,width,height,element_id} = shape_details
 
     function handle_border_box(){
         if(show_border_box=='none'){
@@ -49,12 +52,12 @@ function Shapes_formatter() {
     }
 
 
-  function specs_components(Comp_name){
+  function specs_components(Comp_name , transform_property_value){
     if(typeof(Comp_name)=="string"){
         return(
             <div className={shapes_css.specs_comps}>
-                <div className={shapes_css.specs_comps_label}>{Comp_name}</div>
-                <div className={shapes_css.specs_comps_input}><input name={Comp_name.toLowerCase()} type="text" value={5} /></div>
+                <div className={shapes_css.specs_comps_label}>{Comp_name.toUpperCase()}</div>
+                <div className={shapes_css.specs_comps_input}><input name={Comp_name.toLowerCase()} type="text" value={transform_property_value} /></div>
             </div>
         )
     }
@@ -62,7 +65,7 @@ function Shapes_formatter() {
         return(
             <div className={shapes_css.specs_comps}>
                 <div className={shapes_css.specs_comps_label}>{<Comp_name fontSize='small'/>}</div>
-                <div className={shapes_css.specs_comps_input}><input name='angle' type="text" value={5} /></div>
+                <div className={shapes_css.specs_comps_input}><input name='angle' type="text" value={transform_property_value} /></div>
             </div>            
         )
     }
@@ -72,27 +75,30 @@ function Shapes_formatter() {
   }
 
   return (
-    <div id={shapes_css.main}>
+    <>
+    {
+        shape_details!=null?
+        <div id={shapes_css.main}>
         <div className={shapes_css.main_comps} id={shapes_css.shapes_specs_box}>
             {/* Box for specifications */}
             <div className={`${shapes_css.shapes_specs_comps} ${shapes_css.heading}`}>Specifications</div>
             <div className={shapes_css.shapes_specs_comps} id={shapes_css.specs}>
-                {specs_components('X')}
-                {specs_components('Y')}
-                {specs_components('W')}
-                {specs_components('H')}
-                {specs_components(Angle)}
+                {specs_components('X' , x)}
+                {specs_components('Y' , y)}
+                {specs_components('W' , width)}
+                {specs_components('H' , height)}
+                {specs_components(Angle , 5)}
             </div>
 
             {/* For filling color */}
             <div className={`${shapes_css.shapes_specs_comps} ${shapes_css.heading}`}>Fill</div>
             <div className={`${shapes_css.shapes_specs_comps} ${shapes_css.fill_specs}`}>
                 <label htmlFor={shapes_css.color_box}></label>
-                <input type="color" id={shapes_css.color_box} name="color_box" value={3}/>
+                <input type="color" id={shapes_css.color_box} name="color_box" value={shape_details.fill_color}/>
                 <input type="text" 
                  name='color_value'
                 //  onChange={(e)=>{handle_color_value(e)}} 
-                 value={3} 
+                 value={shape_details.fill_color} 
                  id={shapes_css.color_value} />
             </div>
 
@@ -101,11 +107,11 @@ function Shapes_formatter() {
             <div className={`${shapes_css.shapes_specs_comps} ${shapes_css.fill_specs}`} id={shapes_css.stroke_block}>
                 <div className={shapes_css.fill_specs_comps} id={shapes_css.fill_specs_color_box}>
                     <label htmlFor={shapes_css.color_box}></label>
-                    <input type="color" id={shapes_css.color_box} name="color_box" value={3}/>
+                    <input type="color" id={shapes_css.color_box} name="color_box" value={shape_details.stroke_color}/>
                     <input type="text" 
                     name='color_value'
                     //  onChange={(e)=>{handle_color_value(e)}} 
-                    value={3} 
+                    value={shape_details.stroke_color} 
                     id={shapes_css.color_value} />
                 </div>
 
@@ -124,6 +130,11 @@ function Shapes_formatter() {
 
         </div>
     </div>
+    :
+    <></>
+    }
+    </>
+    
   )
 }
 
